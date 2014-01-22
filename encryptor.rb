@@ -9,7 +9,7 @@ class Encryptor
    'y' => 'l','z' => 'm', ' ' => ' '}
   end
 
-  def encrypt_string(string)
+  def encrypt(string)
     letters = string.split('')
       encrypted_letters = letters.collect do |letter|
         encrypt_letter(letter)
@@ -20,4 +20,18 @@ class Encryptor
   def encrypt_letter(letter)
     cipher[letter.downcase]
   end
-end
+
+  def decrypt(string)
+    letters = string.split('')
+    encrypted_letters = letters.collect do |letter|
+      encrypt_letter(letter)
+      end
+    encrypted_letters.join
+  end
+
+  def decyrpt_letter(letter)
+    cipher[letter.downcase]
+  end
+end 
+
+  
