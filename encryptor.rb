@@ -17,19 +17,17 @@ class Encryptor
       encrypted_letters.join
     end
 
+  alias_method :decrypt, :encrypt
+
+  #def encrypt(string)
+  #  letters = string.split('')
+  #    encrypted_letters = letters.collect do |letter|
+  #      encrypt_letter(letter)
+  #    end
+  #    encrypted_letters.join
+  #  end
+
   def encrypt_letter(letter)
-    cipher[letter.downcase]
-  end
-
-  def decrypt(string)
-    letters = string.split('')
-    encrypted_letters = letters.collect do |letter|
-      encrypt_letter(letter)
-      end
-    encrypted_letters.join
-  end
-
-  def decyrpt_letter(letter)
     cipher[letter.downcase]
   end
 end 
