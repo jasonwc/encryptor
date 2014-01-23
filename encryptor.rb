@@ -29,32 +29,20 @@ class Encryptor
     encrypt(string, -rotation)
   end
 
-  def encrypt_file(filename, rotation)
-    # Create the file handle to the input file
+  def file(type, filename, rotation)
     input = File.open(filename, 'r')
-    # Read the text of the input file
     contents = input.read
-    # Create a name for the output file
-    # Create an output file handle
-    output = File.open(filename + '.encrypted', 'w')
-    # Encrypt the text
-    # Write out the text
-    output.write(encrypt_string(contents, rotation))
-    # Close the file
-    output.close
-  end
-
-  def decrypt_file(filename, rotation)
-    # Create the file handle to the input file
-    input = File.open(filename, 'r')
-    # Read the text of the input file
-    contents = input.read
-    # Decrypt the text
-    # Create a name for the output file
-    # Create an output file handle
-    output = File.open(filename + '.decrypted', 'w')
-    # Write out the text
-    output.write(encrypt_string(contents, -rotation))
+    if type == 'encrypt'
+       output = File.open(filename + '.encrypted', 'w')
+      # Encrypt the text
+      # Write out the text
+      output.write(encrypt_string(contents, rotation))
+    elsif type == 'decrypt'
+      output = File.open(filename + '.decrypted', 'w')
+      # Decrypt the text
+      # Write out the text
+      output.write(encrypt_string(contents, -rotation))
+    end
     # Close the file
     output.close
   end
