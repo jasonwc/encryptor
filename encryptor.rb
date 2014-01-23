@@ -10,7 +10,7 @@ class Encryptor
   end
 
   # Allows the user to encrypt a string and pass in the rotation
-  def encrypt(string, rotation)
+  def encrypt_string(string, rotation)
     # Splits the string into characters in an array
     letters = string.split('')
       # Loops through all the characters and encrypts them with the specified rotation
@@ -24,9 +24,39 @@ class Encryptor
   #alias_method :decrypt, :encrypt
 
   # Allows the user to decrypt a string with a set rotation value
-  def decrypt(string, rotation)
+  def decrypt_string(string, rotation)
     # Calls the encrypt method with -rotation, so that the user doesn't have to enter different values to encrypt or decrypt
     encrypt(string, -rotation)
+  end
+
+  def encrypt_file(filename, rotation)
+    # Create the file handle to the input file
+    input = File.open(filename, 'r')
+    # Read the text of the input file
+    contents = input.read
+    # Create a name for the output file
+    # Create an output file handle
+    output = File.open(filename + '.encrypted', 'w')
+    # Encrypt the text
+    # Write out the text
+    output.write(encrypt_string(contents, rotation))
+    # Close the file
+    output.close
+  end
+
+  def decrypt_file(filename, rotation)
+    # Create the file handle to the input file
+    input = File.open(filename, 'r')
+    # Read the text of the input file
+    contents = input.read
+    # Decrypt the text
+    # Create a name for the output file
+    # Create an output file handle
+    output = File.open(filename + '.decrypted', 'w')
+    # Write out the text
+    output.write(encrypt_string(contents, -rotation))
+    # Close the file
+    output.close
   end
 
   # Encrypts each letter
