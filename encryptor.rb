@@ -13,15 +13,11 @@ class Encryptor
       encrypted_letters.join
     end
 
-  alias_method :decrypt, :encrypt
+  #alias_method :decrypt, :encrypt
 
-  #def encrypt(string)
-  #  letters = string.split('')
-  #    encrypted_letters = letters.collect do |letter|
-  #      encrypt_letter(letter)
-  #    end
-  #    encrypted_letters.join
-  #  end
+  def decrypt(string, rotation)
+    encrypt(string, -rotation)
+  end
 
   def encrypt_letter(letter, rotation)
     cipher(rotation)[letter]
